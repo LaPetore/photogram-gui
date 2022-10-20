@@ -3,11 +3,17 @@
 
 <dl>
   <dt> ID </dt>
-  <dd> <%= @the_user.username %> </dd>
+  <dd> <%= @the_user.id %> </dd>
 
   <dt>Edit user</dt>
-    
-  <dd>form goes here</dd>
+  <dd>
+    <form action="/update_username/<%= @the_user.username %>">
+      <label for="input_username">Username</label>
+      <input id="input_username" type="text" name="query_username2" placeholder="Enter a username..." value="<%= @the_user.username %>">
+      <button>Update user</button>
+    </form>
+  </dd>
+
 </dl>
 
 <h2>Own photos (<%= @the_user.own_photos.size %>)</h2>
@@ -34,7 +40,7 @@
     <td> <%= a_photo.caption %> </td>
     <td> <%= a_photo.created_at %> </td>
     <td>
-      Show details
+      <a href="/photos/<%= a_photo.id %>">Show details</a>
     </td>
   </tr>
   <% end %>
